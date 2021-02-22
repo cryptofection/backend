@@ -1,9 +1,8 @@
 import os
 import requests
 from dotenv import load_dotenv, find_dotenv
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify
 from flask_cors import CORS
-
 
 load_dotenv(find_dotenv())
 
@@ -27,6 +26,3 @@ def quote(id: str):
     headers = {'X-CMC_PRO_API_KEY': os.environ.get("CMC_API_KEY")}
     response = requests.get(f'https://pro-api.coinmarketcap.com/v1/cryptocurrency/quotes/latest?id={id}', headers=headers)
     return jsonify(response.json()["data"][id])
-   
-if __name__ == "__main__": 
-    app.run()
