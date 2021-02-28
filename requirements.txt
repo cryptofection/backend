@@ -3,3 +3,14 @@ Flask==1.1.2
 Flask-Cors==3.0.10
 gunicorn==20.0.4
 requests==2.25.1
+numpy==1.19.2
+pandas==1.2.2
+nltk==3.5
+seaborn==0.11.1
+wordcloud==1.8.1
+matplotlib==3.3.4
+plotly==4.14.3
+tweepy==3.10.0
+psutil==5.8.0
+orca==1.5.4
+funcy==0.9
