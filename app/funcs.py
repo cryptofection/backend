@@ -23,7 +23,7 @@ def search(keyword, resultType, nb):
     for tweet in api.search(q=keyword, lang="en", result_type=resultType, count=nb):
         tweets.append(
             {
-                "id": tweet.id,
+                "id": tweet.id_str,
                 "tweet": tweet.text,
                 "name": tweet.user.name,
                 "location": tweet.user.location,
