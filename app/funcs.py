@@ -12,6 +12,7 @@ from nltk.stem import WordNetLemmatizer
 import nltk
 nltk.downloader.download('vader_lexicon')
 nltk.download('punkt')
+nltk.download('stopwords')
 
 from funcy import project
 
