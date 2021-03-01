@@ -3,11 +3,15 @@ import re
 import tweepy
 import pymongo
 
+
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
 from nltk.tag import pos_tag
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+import nltk
+nltk.downloader.download('vader_lexicon')
+
 from funcy import project
 
 
