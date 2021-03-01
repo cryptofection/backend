@@ -153,19 +153,20 @@ def get_wordCloud(tweets):
     return " ".join(twt)
 
 
-buy_terms = ["positive", "positif", "buy", "bull", "boost", "moon", "rise", "pump"]
+buy_terms = ["positive", "positif", "buy", "bullish", "bull", "boost", "moon", "rise", "pump", "bought"]
 
 hodl_terms = ["hold", "stay", "hodl"]
 
 sell_terms = [
     "negative",
-    "positif",
+    "bearish",
     "loss",
     "drop",
     "plummet",
     "sell",
     "fundraising",
     "dump",
+    "sold",
 ]
 
 
