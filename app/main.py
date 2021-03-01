@@ -15,14 +15,13 @@ CORS(app)
 @app.route("/info", methods=["POST"])
 def get_info():
     result = {}
-    
 
     data = request.get_json()
     key = data["coin"]
-    
-    #search history 
-    result['search_history']=increment_coin(key)
-    
+
+    # search history
+    result["search_history"] = increment_coin(key)
+
     # top 10 tweets
     topTweets = search(key, "popular", 10)
     result["topTweets"] = list(
@@ -42,7 +41,7 @@ def get_info():
     result["score"] = {
         "positive": sentiments["nb_pos"],
         "negative": sentiments["nb_neg"],
-        "neutral": sentiments["nb_neu"]
+        "neutral": sentiments["nb_neu"],
     }
 
     result["hashtags"] = hashtag_input(tweets)
@@ -55,7 +54,7 @@ def get_info():
 
     # visualisations => wordcloud
     result["wordcloud"] = get_wordCloud(tweets)
-    
+
     return jsonify(result)
 
 

@@ -10,16 +10,18 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from funcy import project
 
+
 def increment_coin(coin):
     client = pymongo.MongoClient(os.environ.get("MONGO_URL"))
-    db = client['cryptofection']
-    document = db['monitor']
-    
-    data = document.find_one({},{"_id":False})
-    
-    document.update_one({},{ "$inc" if coin in data.keys() else "$set" : { coin: 1 } })
+    db = client["cryptofection"]
+    document = db["monitor"]
 
-    return document.find_one({},{"_id":False})
+    data = document.find_one({}, {"_id": False})
+
+    document.update_one({}, {"$inc" if coin in data.keys() else "$set": {coin: 1}})
+
+    return document.find_one({}, {"_id": False})
+
 
 def search(keyword, resultType, nb):
     consumer_token = os.environ.get("CONSUMER_TOKEN")
@@ -216,7 +218,7 @@ def buy_decision(result):
     return {
         "buy": result["buy_terms_in"][1],
         "sell": result["sell_terms_in"][1],
-        "hold": result["hold_terms_in"][1]
+        "hold": result["hold_terms_in"][1],
     }
 
 
