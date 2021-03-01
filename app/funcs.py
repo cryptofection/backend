@@ -13,6 +13,7 @@ import nltk
 nltk.downloader.download('vader_lexicon')
 nltk.download('punkt')
 nltk.download('stopwords')
+nltk.download('averaged_perceptron_tagger')
 
 from funcy import project
 
