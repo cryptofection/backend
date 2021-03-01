@@ -15,10 +15,14 @@ CORS(app)
 @app.route("/info", methods=["POST"])
 def get_info():
     result = {}
+    
 
     data = request.get_json()
     key = data["coin"]
-
+    
+    #search history 
+    result['search_history']=increment_coin(key)
+    
     # top 10 tweets
     topTweets = search(key, "popular", 10)
     result["topTweets"] = list(

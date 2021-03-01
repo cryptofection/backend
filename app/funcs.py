@@ -1,6 +1,7 @@
 import os
 import re
 import tweepy
+import pymongo
 
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 from nltk.corpus import stopwords
@@ -9,6 +10,16 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 from funcy import project
 
+def increment_coin(coin):
+    client = pymongo.MongoClient(os.environ.get("MONGO_URL"))
+    db = client['cryptofection']
+    document = db['monitor']
+    
+    data = document.find_one({},{"_id":False})
+    
+    document.update_one({},{ "$inc" if coin in data.keys() else "$set" : { coin: 1 } })
+
+    return document.find_one({},{"_id":False})
 
 def search(keyword, resultType, nb):
     consumer_token = os.environ.get("CONSUMER_TOKEN")
