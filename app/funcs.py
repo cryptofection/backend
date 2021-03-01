@@ -11,6 +11,7 @@ from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
 import nltk
 nltk.downloader.download('vader_lexicon')
+nltk.download('punkt')
 
 from funcy import project
 
