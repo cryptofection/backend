@@ -20,7 +20,9 @@ def increment_coin(coin):
 
     document.update_one({}, {"$inc" if coin in data.keys() else "$set": {coin: 1}})
 
-    return document.find_one({}, {"_id": False})
+    data = document.find_one({}, {"_id": False})
+    keys = sorted(data.keys(), key=lambda key: data[key], reverse=True)[:10]
+    return [[key, data[key]] for key in keys]
 
 
 def search(keyword, resultType, nb):
