@@ -89,10 +89,16 @@ def get_sentiments(tweets):
         else:
             nb_neu += 1
 
-    pos = pos / len(tweets)
-    neg = neg / len(tweets)
-    com = com / len(tweets)
-    neu = neu / len(tweets)
+    if len(tweets) == 0:
+        pos = 0
+        neg = 0
+        com = 0
+        neu = 0
+    else:
+        pos = pos / len(tweets)
+        neg = neg / len(tweets)
+        com = com / len(tweets)
+        neu = neu / len(tweets)
 
     return {
         "pos": round(pos, 2),
