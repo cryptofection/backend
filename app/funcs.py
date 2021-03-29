@@ -24,11 +24,13 @@ def increment_coin(coin):
     db = client["cryptofection"]
     document = db["monitor"]
 
+    coin = coin.replace(".", "_")
     data = document.find_one({}, {"_id": False})
 
     document.update_one({}, {"$inc" if coin in data.keys() else "$set": {coin: 1}})
 
     data = document.find_one({}, {"_id": False})
+
     keys = sorted(data.keys(), key=lambda key: data[key], reverse=True)[:10]
     return [[key, data[key]] for key in keys]
 
